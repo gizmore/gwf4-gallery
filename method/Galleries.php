@@ -53,7 +53,7 @@ final class Gallery_Galleries extends GWF_Method
 			'galleries' => $this->galleries,
 			'sort_url' => $hrefSort,
 			'page_menu' => GWF_PageMenu::display($this->page, $this->nPages, $hrefPage),
-			'href_add_gallery' => GWF_WEB_ROOT.'create_gallery',
+			'href_create_gallery' => GWF_WEB_ROOT.'create_gallery',
 			'href_my_galleries' => GWF_WEB_ROOT.'my_galleries',
 		);
 		return $this->module->template('galleries.php', $tVars);

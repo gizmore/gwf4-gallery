@@ -41,7 +41,7 @@ final class Module_Gallery extends GWF_Module
 				$tVars = array(
 					'href_galleries' => GWF_WEB_ROOT.'galleries',
 					'href_my_galleries' => GWF_WEB_ROOT.'my_galleries',
-					'href_add_gallery' => GWF_WEB_ROOT.'add_gallery',
+					'href_create_gallery' => GWF_WEB_ROOT.'create_gallery',
 				);
 				return $this->template('gallery-sidebar.php', $tVars);
 			}
