@@ -19,7 +19,16 @@ final class Module_Gallery extends GWF_Module
 	##############
 	### Config ###
 	##############
+	public function cfgMaxGalleries() { return $this->getModuleVarInt('galleries_per_user'); }
 	public function cfgAllowGuestGalleries() { return $this->getModuleVarBool('gallery_guests'); }
+	public function cfgMaxImageSize() { return $this->getModuleVarInt('gallery_image_size'); }
+	public function cfgMaxImageWidth() { return $this->getModuleVarInt('gallery_image_width'); }
+	public function cfgMaxImageHeight() { return $this->getModuleVarInt('gallery_image_height'); }
+	
+	############
+	### Path ###
+	############
+	public function galleryPath() { return GWF_PATH.'dbimg/gallery'; }
 	
 	###############
 	### Startup ###
