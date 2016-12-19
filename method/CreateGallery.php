@@ -28,6 +28,7 @@ final class Gallery_CreateGallery extends GWF_Method
 		$m = $this->module;
 		$data = array();
 		$data['name'] = array(GWF_Form::STRING, Common::getRequestString('name'), $m->lang('th_name'));
+		$data['access'] = GWF_ACL::formDefine('access', Common::getRequestString('access', GWF_ACL::PUBLIC));
 		$data['images'] = array(GWF_Form::FILE_IMAGES, '', $m->lang('th_images'), '', $this->fileUploadParameters());
 		$data['save'] = array(GWF_Form::SUBMIT, $m->lang('btn_save'));
 		return new GWF_Form($this, $data);
@@ -46,7 +47,7 @@ final class Gallery_CreateGallery extends GWF_Method
 	public function templateCreateGallery()
 	{
 		$form = $this->form();
-		$form->cleanup();
+// 		$form->cleanup();
 		$tVars = array(
 			'form' => $form->templateY($this->module->lang('ft_create_gallery')),
 		);
@@ -67,12 +68,14 @@ final class Gallery_CreateGallery extends GWF_Method
 		return false;
 	}
 	
+	public function validate_access(Module_Gallery $m, $arg)
+	{
+		return GWF_ACL::validatePost($arg);
+	}
+	
 	public function validate_images(Module_Gallery $m, $arg)
 	{
-		var_dump($arg);
-		$form = $this->form();
-		$files = $form->getVar('images');
-		if (count($files) < 1)
+		if (count($arg) < 1)
 		{
 			return $m->lang('err_no_files_uploaded');
 		}
@@ -98,6 +101,7 @@ final class Gallery_CreateGallery extends GWF_Method
 			'g_id' => '0',
 			'g_name' => $form->getVar('name'),
 			'g_user_id' => $user->getID(),
+			'g_access' => $form->getVar('access'),
 			'g_created_at' => GWF_Time::getDate(),
 			'g_deleted_at' => null,
 		));

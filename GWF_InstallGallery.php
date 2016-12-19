@@ -18,9 +18,18 @@ final class GWF_InstallGallery
 		if ($dropTables)
 		{
 			GWF_File::removeDir($module->galleryPath());
+			GWF_File::removeDir($module->thumbnailPath());
 		}
 		
-		GWF_File::createDir($module->galleryPath());
+		if (!GWF_File::createDir($module->galleryPath()))
+		{
+			return GWF_HTML::err('ERR_GENERAL', array(__FILE__, __LINE__));
+		}
+		
+		if (!GWF_File::createDir($module->thumbnailPath()))
+		{
+			return GWF_HTML::err('ERR_GENERAL', array(__FILE__, __LINE__));
+		}
 		
 		return '';
 	}

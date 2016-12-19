@@ -25,7 +25,7 @@ while ($gallery = $table->fetch($galleries, GDO::ARRAY_O))
 	echo GWF_Table::column($gallery->getID(), 'gwf-num');
 	echo GWF_Table::column($gallery->displayDate(), 'gwf-date');
 	echo GWF_Table::column($gallery->displayNameLinkShow(), 'gwf-label');
-	echo GWF_Table::column($gallery->displayUserNameLinkProfile(), 'gwf-label');
+	echo GWF_Table::column($gallery->displayCreatorNameLinkProfile(), 'gwf-label');
 	echo GWF_Table::column($gallery->getVar('num_images'), 'gwf-num');
 	echo GWF_Table::column($buttons, 'gwf-buttons');
 	echo GWF_Table::rowEnd();

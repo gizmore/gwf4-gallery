@@ -1,6 +1,7 @@
 <?php
 /**
  * Image gallery module.
+ * 
  * @author gizmore
  * @license MIT
  */
@@ -9,7 +10,7 @@ final class Module_Gallery extends GWF_Module
 	##############
 	### Module ###
 	##############
-	public function getVersion() { return 4.00; }
+	public function getVersion() { return 4.01; }
 	public function getDefaultPriority() { return 50; }
 	public function getDefaultAutoLoad() { return true; }
 	public function onLoadLanguage() { return $this->loadLanguage('lang/gallery'); }
@@ -29,6 +30,7 @@ final class Module_Gallery extends GWF_Module
 	### Path ###
 	############
 	public function galleryPath() { return GWF_PATH.'dbimg/gallery'; }
+	public function thumbnailPath() { return GWF_PATH.'dbimg/gallery_thumbnails'; }
 	
 	###############
 	### Startup ###

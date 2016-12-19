@@ -40,7 +40,8 @@ final class Gallery_Galleries extends GWF_Method
 		$this->nPages = GWF_PageMenu::getPagecount($this->ipp, $this->nItems);
 		$this->page = Common::clamp(intval(Common::getGet('page')), 1, $this->nPages);
 		$from = GWF_PageMenu::getFrom($this->page, $this->ipp);
-		$this->galleries = $table->select('*', $conditions, $this->orderby, array('owner'), $this->ipp, $from);
+		$numImagesQuery = sprintf('SELECT COUNT(*) FROM %s where gi_gid=g_id', GWF_TABLE_PREFIX.'gallery_image');
+		$this->galleries = $table->select('*, user_name, ('.$numImagesQuery.') num_images', $conditions, $this->orderby, array('creator'), $this->ipp, $from);
 		return false;
 	}
 	
