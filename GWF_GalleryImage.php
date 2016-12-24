@@ -48,7 +48,7 @@ final class GWF_GalleryImage extends GDO
 	##############
 	public function getID() { return $this->getVar('gi_id'); }
 	public function getGalleryID() { return $this->getVar('gi_gid'); }
-	public function getName() { $name = $this->getFileName(); return Common::rsubstrTo($name, '.', $name); }
+	public function getName() { $name = $this->getFileName(); return Common::substrUntil($name, '.', $name, true); }
 	public function getFileName() { return $this->getVar('gi_file_name'); }
 	public function getFileMime() { return $this->getVar('gi_file_mime'); }
 	public function getFileSize() { return $this->getVar('gi_file_size'); }
@@ -59,13 +59,15 @@ final class GWF_GalleryImage extends GDO
 	###########
 	### SEO ###
 	###########
-	public function getNameSEO() { return GWF_HTML::urlencodeSEO($this->getFileName()); }
-	public function getThumbnailNameSEO() { $name = $this->getNameSEO(); $postfix = Common::rsubstrFrom($name, '.'); $name = Common::rsubstrTo($name, '.'); return $name.'.thumb.'.$postfix; }
+	public function getNameSEO() { return Common::urlencodeSEO($this->getFileName()); }
+	public function getThumbnailNameSEO() { $name = $this->getNameSEO(); $postfix = Common::substrFrom($name, '.', '', true); $name = Common::substrUntil($name, '.', $name, true); return $name.'.thumb.'.$postfix; }
 	
 	###############
 	### Display ###
 	###############
 	public function displayTitle() { return GWF_HTML::display($this->getName()); }
 	public function displayDate() { return GWF_Time::displayDate($this->getUploadedAt()); }
+	public function displayType() { return GWF_HTML::display($this->getFileMime()); }
+	public function displaySize() { return GWF_Upload::humanFilesize($this->getFileSize()); }
 	
 }

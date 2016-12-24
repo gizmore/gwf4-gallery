@@ -9,6 +9,8 @@ final class GWF_InstallGallery
 			'gallery_image_size' => array('2111222', 'int', '-1', '100000000'),
 			'gallery_image_width' => array('2048', 'int', '1', '16348'),
 			'gallery_image_height' => array('2048', 'int', '1', '16348'),
+			'gallery_thumb_width' => array('64', 'int', '1', '1024'),
+			'gallery_thumb_height' => array('64', 'int', '1', '1024'),
 		)).
 		self::createFolders($module, $dropTables);
 	}

@@ -47,13 +47,21 @@ final class Gallery_Thumbnail extends GWF_Method
 		}
 		
 		GWF_Image::render($this->image->thumbnailPath());
-		die();
+		die(0);
 	}
 	
 	private function cacheThumbnail()
 	{
-		GWF_Image::resize($image, $max_width, $max_height, $min_width=1, $min_height=1)
-	
+		if (!GWF_File::isFile($this->image->thumbnailPath()))
+		{
+			GWF_File::createDir(dirname($this->image->thumbnailPath()));
+			$image = GWF_Image::fromPath($this->image->imagePath());
+			$w = $this->module->cfgThumbWidth();
+			$h = $this->module->cfgThumbHeight();
+			$image = GWF_Image::resize($image, $w, $h, $w, $h);
+			imagejpeg($image, $this->image->thumbnailPath());
+		}
+		return true;
 	}
 }
 

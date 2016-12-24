@@ -57,6 +57,7 @@ final class Gallery_Gallery extends GWF_Method
 			'gallery' => $this->gallery,
 			'images' => $this->images,
 			'table' => $this->table,
+			'creator' => $this->gallery->getCreator(),
 			'numImages' => $this->numImages,
 		);
 		return $this->module->template('gallery.php', $tVars);
