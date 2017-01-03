@@ -11,8 +11,7 @@ final class Gallery_Galleries extends GWF_Method
 	
 	public function getHTAccess()
 	{
-		return
-			"RewriteRule galleries/? index.php?mo=Gallery&me=Galleries [QSA]".PHP_EOL;
+		return "RewriteRule galleries/? index.php?mo=Gallery&me=Galleries [QSA]".PHP_EOL;
 	}
 
 	public function execute()

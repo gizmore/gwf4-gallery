@@ -1,4 +1,9 @@
-<h1><?php echo $lang->lang('module_name'); ?></h1>
-<div><md-button href="<?php echo $href_my_galleries; ?>"><?php echo $lang->lang('btn_my_galleries'); ?></md-button></div>
-<div><md-button href="<?php echo $href_galleries; ?>"><?php echo $lang->lang('btn_galleries'); ?></md-button></div>
-<div><md-button href="<?php echo $href_create_gallery; ?>"><?php echo $lang->lang('btn_create_gallery'); ?></md-button></div>
+<gwf-sidebar-item>
+	<h2><?php echo $lang->lang('module_name'); ?></h2>
+	<gwf-buttons>
+		<?php echo GWF_Button::generic($lang->lang('btn_my_galleries'), $href_my_galleries); ?>
+		<?php echo GWF_Button::generic($lang->lang('btn_galleries'), $href_galleries); ?>
+		<?php echo GWF_Button::generic($lang->lang('btn_create_gallery'), $href_create_gallery); ?>
+	</gwf-buttons>
+</gwf-sidebar-item>
+
