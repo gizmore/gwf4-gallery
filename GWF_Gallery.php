@@ -12,7 +12,7 @@ final class GWF_Gallery extends GDO
 			'g_id' => array(GDO::AUTO_INCREMENT),
 			'g_name' => array(GDO::VARCHAR|GDO::UTF8|GDO::CASE_I, GDO::NOT_NULL, 127),
 			'g_user_id' => array(GDO::UINT|GDO::INDEX, GDO::NOT_NULL),
- 			'g_access' => GWF_ACL::gdoDefine(GWF_ACL::PUBLIC),
+ 			'g_access' => GWF_ACL::gdoDefine(GWF_ACL::PUBLICY),
 			'g_created_at' => array(GDO::DATE, GDO::NOT_NULL, GWF_Date::LEN_SECOND),
 			'g_deleted_at' => array(GDO::DATE, GDO::NULL, GWF_Date::LEN_SECOND),
 

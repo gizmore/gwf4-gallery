@@ -28,7 +28,7 @@ final class Gallery_CreateGallery extends GWF_Method
 		$m = $this->module;
 		$data = array();
 		$data['name'] = array(GWF_Form::STRING, Common::getRequestString('name'), $m->lang('th_name'));
-		$data['access'] = GWF_ACL::formDefine('access', Common::getRequestString('access', GWF_ACL::PUBLIC));
+		$data['access'] = GWF_ACL::formDefine('access', Common::getRequestString('access', GWF_ACL::PUBLICY));
 		$data['images'] = array(GWF_Form::FILE_IMAGES, '', $m->lang('th_images'), '', $this->fileUploadParameters());
 		$data['save'] = array(GWF_Form::SUBMIT, $m->lang('btn_save'));
 		return new GWF_Form($this, $data);
